@@ -71,7 +71,11 @@ public enum EditorContext {
 
 	public static boolean taskDoesNotExist(final String... names) {
 		for (final String name : names)
-			if (EditorContext.JOB_MANAGER.find(name).length > 0) return false;
+			if (EditorContext.taskExists(name)) return false;
 		return true;
+	}
+
+	private static boolean taskExists(final String name) {
+		return EditorContext.JOB_MANAGER.find(name).length > 0;
 	}
 }
