@@ -23,6 +23,7 @@ public enum EditorContext {
 	public static final IJobManager JOB_MANAGER = Job.getJobManager();
 
 	public static void flushEvents() {
+		EditorContext.DISPLAY.update();
 		while (EditorContext.DISPLAY.readAndDispatch())
 			EditorContext.DISPLAY.update();
 	}
