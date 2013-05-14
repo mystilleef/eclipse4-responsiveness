@@ -4,7 +4,7 @@ import com.laboki.eclipse.plugin.responsiveness.instance.AbstractEventBusInstanc
 import com.laboki.eclipse.plugin.responsiveness.instance.Instance;
 import com.laboki.eclipse.plugin.responsiveness.main.EditorContext;
 import com.laboki.eclipse.plugin.responsiveness.main.EventBus;
-import com.laboki.eclipse.plugin.responsiveness.task.AsyncTask;
+import com.laboki.eclipse.plugin.responsiveness.task.SyncTask;
 
 public abstract class AbstractListener extends AbstractEventBusInstance implements IListener {
 
@@ -43,10 +43,10 @@ public abstract class AbstractListener extends AbstractEventBusInstance implemen
 	}
 
 	protected static void flushEvents() {
-		new AsyncTask() {
+		new SyncTask() {
 
 			@Override
-			public void asyncExecute() {
+			public void syncExecute() {
 				EditorContext.flushEvents();
 			}
 		}.begin();
